@@ -8,6 +8,10 @@ use ModelSuppliers\ModelSuppliers;
 
 class ControllerPrice extends Controller
 {
+	private $action;
+	private $param;
+	private $model;
+	private $data;
 
 	public function __construct($action = '', $param = [])
 	{
@@ -88,27 +92,7 @@ class ControllerPrice extends Controller
 			if (isset($resData['price'][$key_price[0]])) {
 				$this->data['price'][] = $resData['price'][$key_price[0]];
 			}
-
 		}
-// Сохраняем итог в файл price.csv
-		$fp = fopen(DOWNLOAD_PRICE . 'price.csv', 'w');
-		foreach ($this->data['price'] as $p => $titlesItem) {
-			$itog[$p] = array_map(function ($arg) {
-				return iconv("UTF-8", "Windows-1251//IGNORE", $arg);
-			}, (array)$titlesItem);
-		}
-		foreach ($itog as $fields) {
-			//$mas[] = fputcsv($fp, (array)$fields, ';');
-			fwrite($fp, implode(';', (array)$fields) . "\r\n");
-		}
-		$this->data['button_price_download'] = [
-			'name' => 'Скачать файл',
-			'href' => '../' . DOWNLOAD_PRICE . 'price.csv',
-		];
-//		echo '<pre>';
-//		var_export($products);
-//		echo '</pre>';
-
 	}
 
 	public function getLayout()

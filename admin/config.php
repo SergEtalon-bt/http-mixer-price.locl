@@ -4,6 +4,7 @@ define('PATH_SYS', '/core/');
 define('PATH_SYS_ADMIN', '/admin/');
 define('CONTROLLER', '../admin/controllers/');
 define('DOWNLOAD_PRICE', '../uploads/download_price/');
+define('MISSING_PRICE', '../uploads/missing_price/');
 
 
 // DB
