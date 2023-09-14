@@ -1,0 +1,5 @@
+RewriteEngine on
+
+#RewriteRule uploads/.* uploads/.*
+RewriteRule admin/.* admin/index.php
+#RewriteRule .* index.php
